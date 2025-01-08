@@ -61,3 +61,33 @@ button.addEventListener("click", () => {
 
 
 document.body.appendChild(button);
+
+
+
+// laboration 4
+// ----------------------------------------
+
+// med setInterval kan instruktioner upprepas inom en angiven tid
+// 1 sekund i taget
+
+// initiera en variabel som visar sekunden
+let second = 0;
+
+setInterval(() => {
+    // uppgift´: visa vilken sekund som gäller
+    console.log("sekund: " + second++);
+}, 1000);
+
+// UPPGIFT: skapa en nedräkning från 5 till 0
+
+let five = 5;
+let intervalID = setInterval(() => {
+    console.log("räknar ner..." + five--);
+    if (five === 0) {
+    clearInterval(intervalID);
+    console.log("du har nått 0 sekunder");
+    }
+}, 1000);
+
+
+
