@@ -1,20 +1,64 @@
 // Använd XMLHttpRequest
 
 // 1
-// skapa en textfil i aktuell mapp
-// exempelvis en fil med namnet info.txt
+// Skapa en textfil i aktuell mapp
+// exempelvis en fil men namnet 'info.txt'
 
 // 2
-// skapa en knapp som anger att filen ska hämtas
+// Skapa dynamiskt en knapp som på ngt sätt
+//  anger att filen ska håmtas
 
-let button = document.createElement("button");
-button.textContent = "Hämta fil";
+const button = document.createElement("button");
+button.textContent = "Dubbelklicka för att läsa filen ";
 document.body.appendChild(button);
 
-// 3
-// lägg till en händelselyssnare för knappen
-// när man dubbelklickar på knappen
-// ska filen hämtas via XMLHttpRequest
-// ... och innehållet ska visas ... var
 
-button.addEventListener("dblclick")
+
+// 3
+// Lägg till en händelselyssnare för knappen
+// När man dubbelklickar på knappen
+// ska filen hämtas via XMLHttpRequest
+// ...och innehållet ska visas ... var
+
+button.addEventListener("click", () => {
+    console.log("dblklick...");
+
+    // XMLHttpRequest
+    const xhr = new XMLHttpRequest();
+
+    // med metoden open() anges parametrar: metod (ex GET) samt url
+    xhr.open("GET", "info.txt");
+
+    // lyssna på event 'load'
+    xhr.addEventListener("load", (e) => {
+        console.log("e", e);
+
+        // hantera xhr properties, ex status, responseText 
+        // const content = xhr.responseText;
+        // console.log("content", content);
+
+        // om xhr.status returnerar 200 finns filen 
+        // - läs innehållet efter en sådan kontroll
+        console.log("status:", xhr.status, xhr.statusText);
+
+        if (xhr.status === 200) {
+            const content = xhr.responseText;
+            console.log("content", content);   
+            
+            // uppgift:
+            // anropa en egen metod / funktion som kan visa innehållet
+            // på DOM:en
+            // om metoden hette render...
+            render(content); 
+        }
+    });
+
+    // med metoden send() initieras en request
+    xhr.send();
+});
+
+function render(text) {
+    const p = document.createElement("p");
+    p.textContent = text;
+    document.body.appendChild(p);
+}
