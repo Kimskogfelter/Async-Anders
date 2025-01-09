@@ -20,7 +20,7 @@ document.body.appendChild(button);
 // ska filen hämtas via XMLHttpRequest
 // ...och innehållet ska visas ... var
 
-button.addEventListener("click", () => {
+button.addEventListener("dblclick", () => {
     console.log("dblklick...");
 
     // XMLHttpRequest
@@ -59,6 +59,6 @@ button.addEventListener("click", () => {
 
 function render(text) {
     const p = document.createElement("p");
-    p.textContent = text;
+    p.innerHTML = text;
     document.body.appendChild(p);
 }
