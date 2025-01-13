@@ -101,7 +101,7 @@ function dice() {
             // avbryt intervallet
             clearInterval(id);
 
-            // manuellt ang vilket värdet blev så att det överensstämmer med
+            // manuellt ange vilket värdet blev så att det överensstämmer med
             // tärningen
             spanDice.textContent = value;
 
@@ -114,4 +114,7 @@ function dice() {
 // en promise baserad funktion hanteras med nyckelordet 'then'
 dice().then((value) => {
     console.log(`... ${value}`);
+    const p = document.createElement("p");
+    p.textContent = `Tärningen ovan visar ${value}`;
+    document.body.appendChild(p);
 });
